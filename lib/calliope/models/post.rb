@@ -6,6 +6,8 @@ module Calliope
       included do
         attr_protected :blog_id
         belongs_to :blog
+        
+        scope :latest, order("created_at DESC")
       end
 
       module ClassMethods

@@ -8,7 +8,7 @@ module Calliope
     def update
       @blog = Blog.find_by_name(params[:name])
       @blog.update_attributes(params[:blog])
-      respond_with(@blog, :location => blog_posts_url(params[:name]))
+      respond_with(@blog, :location => root_blog_url(params[:name]))
     end
   end
 end

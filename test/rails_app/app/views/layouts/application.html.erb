@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsApp</title>
+  <title>Calliope - Blog engine for Ruby on Rails</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <section id="content">
+    <%= yield %>
+  </section>
 
-<%= yield %>
-
+  <% if content_for?(:sidebar) %>
+    <aside id="sidebar">
+      <%= yield :sidebar %>
+    </aside>
+  <% end %>
 </body>
 </html>

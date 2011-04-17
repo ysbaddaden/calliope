@@ -3,6 +3,7 @@
 <% @posts.each do |post| %>
   <article class="post">
     <h2><%= post.title %></h2>
+    <p class="date"><%= l(post.created_at) %></p>
     
     <div class="body">
       <%= simple_format post.body %>
@@ -16,3 +17,9 @@
     </ul>
   </article>
 <% end %>
+
+<% content_for :sidebar do %>
+  <%= render "blogs/about" %>
+  <%= render "latest_posts", :posts => current_blog.posts.latest.limit(5) %>
+<% end %>
+

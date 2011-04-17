@@ -22,19 +22,19 @@ class RoutesTest < ActionController::TestCase
   end
 
   test "blog posts" do
-    assert_routing "/blog",    :controller => "posts", :action => "index", :blog => "blog"
-    assert_routing "/blog/43", :controller => "posts", :action => "show",  :blog => "blog", :id => "43"
+    assert_routing "/blog", :controller => "posts", :action => "index", :name => "blog"
+    assert_routing "/blog/posts/43", :controller => "posts", :action => "show",  :name => "blog", :id => "43"
     
-    assert_routing "/blog/new",    :controller => "posts", :action => "new",  :blog => "blog"
-    assert_routing "/blog/1/edit", :controller => "posts", :action => "edit", :blog => "blog", :id => "1"
+    assert_routing "/blog/posts/new", :controller => "posts", :action => "new",  :name => "blog"
+    assert_routing "/blog/posts/1/edit", :controller => "posts", :action => "edit", :name => "blog", :id => "1"
     
-    assert_routing({ :method => :post, :path => "/blog" },
-      :controller => "posts", :action => "create", :blog => "blog")
+    assert_routing({ :method => :post, :path => "/blog/posts" },
+      :controller => "posts", :action => "create", :name => "blog")
     
-    assert_routing({ :method => :put, :path => "/blog/2" },
-      :controller => "posts", :action => "update", :blog => "blog", :id => "2")
+    assert_routing({ :method => :put, :path => "/blog/posts/2" },
+      :controller => "posts", :action => "update", :name => "blog", :id => "2")
     
-    assert_routing({ :method => :delete, :path => "/blog/3" },
-      :controller => "posts", :action => "destroy", :blog => "blog", :id => "3")
+    assert_routing({ :method => :delete, :path => "/blog/posts/3" },
+      :controller => "posts", :action => "destroy", :name => "blog", :id => "3")
   end
 end

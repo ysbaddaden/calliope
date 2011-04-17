@@ -3,7 +3,7 @@ module Calliope
     helper_method :current_blog
 
     def index
-      @posts = current_blog.posts
+      @posts = current_blog.posts.latest
       respond_with(@posts)
     end
 
@@ -36,13 +36,13 @@ module Calliope
     def destroy
       @post = current_blog.posts.find(params[:id])
       @post.destroy
-      respond_with(@post, :location => blog_posts_url(current_blog.name))
+      respond_with(@post, :location => root_blog_url(current_blog.name))
     end
 
     def current_blog
       unless @current_blog
-        @current_blog = Blog.find_by_name(params[:blog])
-        raise ActiveRecord::RecordNotFound.new("Couldn't find blog with name #{params[:blog]}") unless @current_blog
+        @current_blog = Blog.find_by_name(params[:name])
+        raise ActiveRecord::RecordNotFound.new("Couldn't find blog with name #{params[:name]}") unless @current_blog
       end
       
       @current_blog

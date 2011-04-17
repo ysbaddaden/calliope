@@ -9,7 +9,7 @@ class BlogsControllerTest < ActionController::TestCase
 
     test "should update for #{blog}" do
       put :update, :name => blog, :blog => { :title => "Da Blog" }
-      assert_redirected_to blog_posts_url(blog)
+      assert_redirected_to root_blog_url(blog)
     end
   end
 end

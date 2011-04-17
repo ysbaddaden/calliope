@@ -1,5 +1,6 @@
 <article class="post">
   <h1><%= @post.title %></h1>
+  <p class="date"><%= l(@post.created_at) %></p>
   
   <div class="body">
     <%= simple_format @post.body %>
@@ -13,3 +14,8 @@
       blog_post_path(current_blog.name, @post), :method => :delete %></li>
   </ul>
 </article>
+
+<% content_for :sidebar do %>
+  <%= render "blogs/about" %>
+  <%= render "latest_posts", :posts => current_blog.posts.latest.limit(5) %>
+<% end %>

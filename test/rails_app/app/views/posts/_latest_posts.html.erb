@@ -1,0 +1,10 @@
+<section class="latest-posts">
+  <h4><%= t('calliope.posts.sidebar.latest_posts') %></h4>
+  
+  <% posts.each do |post| %>
+    <article>
+      <h4><%= link_to post.title, blog_post_path(current_blog.name, post) %></h4>
+      <p><%= truncate post.body, :length => 120 %></p>
+    </article>
+  <% end %>
+</section>

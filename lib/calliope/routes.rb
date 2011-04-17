@@ -12,13 +12,13 @@ module ActionDispatch # :nodoc:
           options[:constraints] = { :name => re }
         end
         
-        resource :blog, options
-        resources :posts, :path => ":blog", :as => 'blog_posts', :constraints => { :blog => re }
+        resource :blog, options do
+          resources :posts, :except => :index
+          root :to => "posts#index", :via => :get
+        end
         
 #        match "/:blog/:year/:month/:day/:url_title" => "posts#show",
 #          :constraints => options[:constraints], :as => "pretty_blog_post"
-        
-#        resources :posts, :path => ':blog', :as => 'blog', :constraints => options[:constraints]
       end
     end
   end

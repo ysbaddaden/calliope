@@ -9,7 +9,7 @@ class BlogsTest < ActionDispatch::IntegrationTest
       fill_in 'blog_about', :with => "some new about"
       click_button 'blog_submit'
       
-      assert_equal blog_posts_path(blog), current_path
+      assert_equal root_blog_path(blog), current_path
       assert_equal "some new title", blogs(blog).title
       assert_equal "some new about", blogs(blog).about
     end
