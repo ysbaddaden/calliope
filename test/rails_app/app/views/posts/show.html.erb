@@ -1,0 +1,15 @@
+<article class="post">
+  <h1><%= @post.title %></h1>
+  
+  <div class="body">
+    <%= simple_format @post.body %>
+  </div>
+  
+  <ul class="actions">
+    <li><%= link_to t('calliope.posts.index.edit_link'),
+      edit_blog_post_path(current_blog.name, @post) %></li>
+    
+    <li><%= link_to t('calliope.posts.index.destroy_link'),
+      blog_post_path(current_blog.name, @post), :method => :delete %></li>
+  </ul>
+</article>

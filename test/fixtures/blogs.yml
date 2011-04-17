@@ -1,0 +1,8 @@
+blog:
+  name: blog
+  title: "Blog"
+
+news:
+  name: news
+  title: "Newsletters"
+

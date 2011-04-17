@@ -1,0 +1,10 @@
+blog:
+  blog:  blog
+  title: "Blog Post"
+  body:  "Body of blog post"
+
+news:
+  blog:  news
+  title: "Newsletter 1"
+  body:  "Body of newsletter 1"
+

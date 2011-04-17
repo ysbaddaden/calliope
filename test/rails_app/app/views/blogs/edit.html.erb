@@ -1,0 +1,18 @@
+<h1><%= t('calliope.blogs.edit.heading', :title => @blog.title) %></h1>
+
+<%= form_for @blog, :url => { :action => :update } do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :about %>
+    <%= f.text_area :about %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit t('calliope.blogs.edit.update_btn') %>
+    <%= link_to t('calliope.blogs.edit.cancel_link'), blog_posts_path(params[:name]) %>
+  </div>
+<% end %>
