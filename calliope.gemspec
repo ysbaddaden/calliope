@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.summary = %q{Blog engine for Ruby on Rails.}
   s.test_files = [
     "test/functional/blogs_controller_test.rb",
+    "test/functional/posts_controller_test.rb",
     "test/functional/routes_test.rb",
     "test/integration/blogs_test.rb",
     "test/integration/posts_test.rb",
