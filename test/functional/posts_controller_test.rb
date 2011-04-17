@@ -12,8 +12,10 @@ class PostsControllerTest < ActionController::TestCase
     test "should get show for #{blog}" do
       get :show, :name => blog, :id => posts(blog).to_param
       assert_response :ok
-      assert_select 'article.post', 1
-      assert_select 'article.post h1', posts(blog).title
+      assert_select '#post', 1
+      assert_select '#post h1', posts(blog).title
+      assert_select '#post form.new_comment', 1
+      assert_select "form[action=" + blog_post_comments_path(blogs(blog).name, posts(blog)) + "]", 1
     end
 
     test "should get new for #{blog}" do

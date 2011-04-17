@@ -4,16 +4,16 @@ module ActionDispatch # :nodoc:
       def calliope(*blogs)
         options = blogs.extract_options!
         
-        options[:path] = ":name"
-        options[:only] = [:edit, :update]
+        _options = { :path => ":name", :only => [:edit, :update] }
+        _options[:constraints] = {
+          :name => Regexp.new(blogs.map { |b| Regexp.escape(b.to_s) }.join('|'))
+        } if blogs.any?
         
-        if blogs.any?
-          re = Regexp.new(blogs.collect { |blog| Regexp.escape(blog.to_s) }.join('|'))
-          options[:constraints] = { :name => re }
-        end
-        
-        resource :blog, options do
-          resources :posts, :except => :index
+        resource :blog, _options do
+          resources :posts, :except => :index do
+            resources :comments, :commentable => 'post' unless options[:comments] == false
+          end
+          
           root :to => "posts#index", :via => :get
         end
         

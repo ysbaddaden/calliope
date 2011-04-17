@@ -10,17 +10,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110416154847) do
+ActiveRecord::Schema.define(:version => 20110417162758) do
 
   create_table "blogs", :force => true do |t|
     t.string   "name",       :null => false
     t.string   "title"
-    t.string   "about"
+    t.text     "about"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "blogs", ["name"], :name => "index_blogs_on_name", :unique => true
+
+  create_table "comments", :force => true do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.text     "body"
+    t.string   "user_name"
+    t.string   "user_email"
+    t.string   "user_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], :name => "index_comments_on_commentable_type_and_commentable_id"
 
   create_table "posts", :force => true do |t|
     t.integer  "blog_id",    :null => false

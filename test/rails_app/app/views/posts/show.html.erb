@@ -1,5 +1,6 @@
-<article class="post">
+<article id="post" class="post">
   <h1><%= @post.title %></h1>
+  
   <p class="date"><%= l(@post.created_at) %></p>
   
   <div class="body">
@@ -7,12 +8,20 @@
   </div>
   
   <ul class="actions">
-    <li><%= link_to t('calliope.posts.index.edit_link'),
+    <li><%= link_to t('calliope.posts.show.edit_link'),
       edit_blog_post_path(current_blog.name, @post) %></li>
     
-    <li><%= link_to t('calliope.posts.index.destroy_link'),
+    <li><%= link_to t('calliope.posts.show.destroy_link'),
       blog_post_path(current_blog.name, @post), :method => :delete %></li>
   </ul>
+  
+  <section id="comments">
+    <h2><%= t 'calliope.posts.show.comments_heading' %></h2>
+    
+    <%= render :partial => "comments/comment", :collection => @post.comments %>
+    <%= render "comments/form", :comment => @post.comments.build,
+      :url => blog_post_comments_path(current_blog.name, @post) %>
+  </section>
 </article>
 
 <% content_for :sidebar do %>

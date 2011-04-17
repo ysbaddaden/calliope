@@ -8,8 +8,8 @@ module Calliope
         has_many :posts
       end
 
-      module ClassMethods
-      end
+#      module ClassMethods
+#      end
     end
   end
 end

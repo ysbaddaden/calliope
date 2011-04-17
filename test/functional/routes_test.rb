@@ -37,4 +37,9 @@ class RoutesTest < ActionController::TestCase
     assert_routing({ :method => :delete, :path => "/blog/posts/3" },
       :controller => "posts", :action => "destroy", :name => "blog", :id => "3")
   end
+
+  test "comments" do
+    assert_routing "/blog/posts/1/comments/new",
+      :controller => "comments", :action => "new", :name => "blog", :post_id => "1", :commentable => "post"
+  end
 end
