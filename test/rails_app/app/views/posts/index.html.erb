@@ -1,19 +1,18 @@
-<h1><%= t 'calliope.posts.index.heading' %></h1>
-
 <% @posts.each do |post| %>
   <article class="post">
-    <h2><%= post.title %></h2>
-    <p class="date"><%= l(post.created_at) %></p>
+    <h2><%= link_to post.title, blog_post_path(current_blog.name, post) %></h2>
+    
+    <p class="date"><%= l(post.created_at.to_date, :format => :long) %></p>
     
     <div class="body">
       <%= simple_format post.body %>
     </div>
     
     <ul class="actions">
-      <li><%= link_to t('calliope.posts.index.edit_link'),
+      <li><%= link_to t('calliope.posts.show.read_link'),
+        blog_post_path(current_blog.name, post.id) %></li>
+      <li class="admin"><%= link_to t('calliope.posts.show.edit_link'),
         edit_blog_post_path(current_blog.name, post.id) %></li>
-      <li><%= link_to t('calliope.posts.index.destroy_link'),
-        blog_post_path(current_blog.name, post.id), :method => :delete %></li>
     </ul>
   </article>
 <% end %>

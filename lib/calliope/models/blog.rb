@@ -5,7 +5,10 @@ module Calliope
 
       included do
         attr_protected :name
+        
         has_many :posts
+        
+        validates_presence_of :name
       end
 
 #      module ClassMethods

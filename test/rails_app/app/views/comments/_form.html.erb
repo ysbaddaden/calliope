@@ -1,25 +1,32 @@
+<%# TODO: remote submission with javascript callback %>
+
 <%= form_for comment, :url => url do |f| %>
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_area :body %>
+  <div class="column left">
+    <div class="field">
+      <%= f.label :body %>
+      <%= f.text_area :body, :rows => 7 %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :user_name %>
-    <%= f.text_field :user_name %>
-  </div>
+  <div class="column right">
+    <div class="field">
+      <%= f.label :user_name %>
+      <%= f.text_field :user_name %>
+    </div>
 
-  <div class="field">
-    <%= f.label :user_email %>
-    <%= f.email_field :user_email %>
-  </div>
+    <div class="field">
+      <%= f.label :user_email %>
+      <%= f.email_field :user_email %>
+    </div>
 
-  <div class="field">
-    <%= f.label :user_url %>
-    <%= f.url_field :user_url, :placeholder => 'http://' %>
+    <div class="field">
+      <%= f.label :user_url %>
+      <%= f.url_field :user_url, :placeholder => 'http://' %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= f.submit t(:submit_btn, :scope => [:calliope, :comments, action_name]) %>
+    <%= f.submit t(:submit_btn, :scope => [:calliope, :comments, action_name == 'edit' ? 'edit' : 'new']),
+      :class => 'default' %>
   </div>
 <% end %>

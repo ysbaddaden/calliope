@@ -1,7 +1,12 @@
-<article class="about">
-  <h3><%= current_blog.title %></h3>
+<article id="about">
+  <h3><%= t('calliope.posts.sidebar.about') %></h3>
   
   <div class="body">
     <%= simple_format current_blog.about %>
   </div>
+  
+  <ul class="actions">
+    <li class="admin"><%= link_to t('calliope.posts.sidebar.edit_blog_link'), edit_blog_path(current_blog.name) %></li>
+    <li class="admin"><%= link_to t('calliope.posts.sidebar.new_post_link'), new_blog_post_path(current_blog.name) %></li>
+  </ul>
 </article>

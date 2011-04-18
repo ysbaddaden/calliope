@@ -1,19 +1,20 @@
 <article id="post" class="post">
   <h1><%= @post.title %></h1>
   
-  <p class="date"><%= l(@post.created_at) %></p>
+  <p class="date"><%= l(@post.created_at.to_date, :format => :long) %></p>
   
   <div class="body">
     <%= simple_format @post.body %>
   </div>
   
   <ul class="actions">
-    <li><%= link_to t('calliope.posts.show.edit_link'),
+    <li class="admin"><%= link_to t('calliope.posts.show.edit_link'),
       edit_blog_post_path(current_blog.name, @post) %></li>
-    
-    <li><%= link_to t('calliope.posts.show.destroy_link'),
+    <li class="admin"><%= link_to t('calliope.posts.show.destroy_link'),
       blog_post_path(current_blog.name, @post), :method => :delete %></li>
   </ul>
+  
+  <hr/>
   
   <section id="comments">
     <h2><%= t 'calliope.posts.show.comments_heading' %></h2>

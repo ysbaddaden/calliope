@@ -1,16 +1,16 @@
 <%= form_for @post, :url => { :action => action_name == 'edit' ? 'update' : 'create' } do |f| %>
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :autofocus => true, :class => 'big' %>
   </div>
 
   <div class="field">
     <%= f.label :body %>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, :rows => 10 %>
   </div>
 
   <div class="actions">
-    <%= f.submit t(:submit_btn, :scope => [:calliope, :posts, action_name]) %>
-    <%#= link_to t(:cancel_link, :scope => [:calliope, :posts, action_name]), request.referer %>
+    <%= f.submit t(:submit_btn, :scope => [:calliope, :posts, action_name]), :class => 'default' %>
+    <%= link_to t(:cancel_link, :scope => [:calliope, :posts, action_name]), root_blog_path(current_blog.name) %>
   </div>
 <% end %>
