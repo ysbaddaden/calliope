@@ -1,0 +1,37 @@
+en:
+  calliope:
+    blogs:
+      edit:
+        heading: "Edit Blog"
+        submit_btn: "Save"
+        cancel_link: "cancel"
+    
+    posts:
+      sidebar:
+        about: "About"
+        latest_posts: "Latest Posts"
+        edit_blog_link: "Edit Blog"
+        new_post_link: "New Post"
+      
+      show:
+        read_link: "Read Post"
+        edit_link: "Edit Post"
+        destroy_link: "Destroy Post"
+        comments_heading: "Comments"
+      
+      new:
+        heading: "New Post"
+        submit_btn: "Create Post"
+        cancel_link: "cancel"
+      
+      edit:
+        heading: "Edit Post"
+        submit_btn: "Update Post"
+        cancel_link: "cancel"
+
+    comments:
+      new:
+        submit_btn: "Post Comment"
+      edit:
+        submit_btn: "Update Comment"
+
