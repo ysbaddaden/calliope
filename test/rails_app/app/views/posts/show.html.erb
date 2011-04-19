@@ -4,13 +4,13 @@
   <p class="date"><%= l(@post.created_at.to_date, :format => :long) %></p>
   
   <div class="body">
-    <%= simple_format @post.body %>
+    <%= auto_link simple_format(@post.body) %>
   </div>
   
   <ul class="actions">
-    <li class="admin"><%= link_to t('calliope.posts.show.edit_link'),
+    <li><%= link_to t('calliope.posts.show.edit_link'),
       edit_blog_post_path(current_blog.name, @post) %></li>
-    <li class="admin"><%= link_to t('calliope.posts.show.destroy_link'),
+    <li><%= link_to t('calliope.posts.show.destroy_link'),
       blog_post_path(current_blog.name, @post), :method => :delete %></li>
   </ul>
   

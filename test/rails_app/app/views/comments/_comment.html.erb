@@ -1,6 +1,6 @@
-<article class="comment">
+<%= content_tag :article, :class => 'comment', :id => "C#{comment.id}" do %>
   <h3><%= link_to_if comment.user_url?, comment.user_name, comment.user_url %></h3>
   <div class="body">
-    <%= simple_format comment.body %>
+    <%= auto_link simple_format(comment.body), :html => { :rel => 'nofollow' } %>
   </div>
-</article>
+<% end %>

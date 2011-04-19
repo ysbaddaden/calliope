@@ -7,4 +7,5 @@ gem 'calliope', :path => '../..'
 
 gem 'sqlite3'
 gem 'capybara'
+gem 'haml'
 
