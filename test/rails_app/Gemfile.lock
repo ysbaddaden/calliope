@@ -1,8 +1,8 @@
 PATH
   remote: ../..
   specs:
-    calliope (0.0.1)
-      rails (~> 3.0.6)
+    calliope (0.1.0)
+      rails (~> 3.0.7)
 
 PATH
   remote: ../../../commentable
