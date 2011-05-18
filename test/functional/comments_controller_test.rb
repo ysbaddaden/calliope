@@ -12,7 +12,7 @@ class CommentsControllerTest < ActionController::TestCase
       assert_difference('Comment.count') do
         post :create, :commentable => "post", :name => blog, :post_id => posts(blog).to_param,
           :comment => { :body => "some comment body" }
-        assert_redirected_to blog_post_comment_url(blog, posts(blog), assigns(:comment))
+        assert_redirected_to blog_post_url(blog, posts(blog), :anchor => "C#{assigns(:comment).to_param}")
       end
     end
 
@@ -28,7 +28,7 @@ class CommentsControllerTest < ActionController::TestCase
         put :update, :commentable => "post", :name => blog,
           :post_id => posts(blog).to_param, :id => comments("#{blog}_post_1").to_param,
           :comment => { :body => "some new comment body" }
-        assert_redirected_to blog_post_comment_url(blog, posts(blog), comments("#{blog}_post_1"))
+        assert_redirected_to blog_post_url(blog, posts(blog), :anchor => "C#{comments("#{blog}_post_1").to_param}")
       end
       
       assert_equal "some new comment body", comments("#{blog}_post_1").reload.body

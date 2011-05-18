@@ -1,11 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.6'
+gem 'rails', '3.0.7'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'calliope', :path => '../..'
+gem 'calliope',    :path => '../..'
+gem 'commentable', :path => '../../../commentable'
 
 gem 'sqlite3'
 gem 'capybara'
-gem 'haml'
+#gem 'haml'
 

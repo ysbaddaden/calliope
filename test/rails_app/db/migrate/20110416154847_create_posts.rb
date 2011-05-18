@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.references :blog, :null => false
       t.string     :title
       t.text       :body
+      t.integer    :comments_count
       t.timestamps
     end
     

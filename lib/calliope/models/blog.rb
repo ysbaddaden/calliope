@@ -11,8 +11,14 @@ module Calliope
         validates_presence_of :name
       end
 
-#      module ClassMethods
-#      end
+      module ClassMethods
+        def create_with_name(name)
+          blog = new
+          blog.name = name
+          blog.save
+          blog
+        end
+      end
     end
   end
 end

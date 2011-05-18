@@ -6,6 +6,7 @@ class CreateComments < ActiveRecord::Migration
       t.string     :user_name
       t.string     :user_email
       t.string     :user_url
+      t.string     :user_ip,    :limit => 15
       t.timestamps
     end
     
