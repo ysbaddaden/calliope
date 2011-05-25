@@ -33,5 +33,13 @@ class CommentsControllerTest < ActionController::TestCase
       
       assert_equal "some new comment body", comments("#{blog}_post_1").reload.body
     end
+
+    test "should destroy for #{blog}" do
+      assert_difference('Comment.count', -1) do
+        delete :destroy, :commentable => "post", :name => blog,
+          :post_id => posts(blog).to_param, :id => comments("#{blog}_post_1").to_param
+        assert_redirected_to blog_post_url(blog, posts(blog))
+      end
+    end
   end
 end

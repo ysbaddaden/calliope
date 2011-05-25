@@ -11,7 +11,7 @@ module ActionDispatch # :nodoc:
         
         resource :blog, _options do
           resources :posts, :except => :index do
-            resources :comments, :commentable => 'post' unless options[:comments] == false
+            commentable :commentable => 'post' unless options[:comments] == false
           end
           
           root :to => "posts#index", :via => :get
