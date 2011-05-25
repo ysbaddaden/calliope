@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(:version => 20110417162758) do
     t.string   "user_email"
     t.string   "user_url"
     t.string   "user_ip",          :limit => 15
+    t.boolean  "spam",                           :default => false
+    t.boolean  "troll",                          :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
