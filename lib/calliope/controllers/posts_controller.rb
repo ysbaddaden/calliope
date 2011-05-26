@@ -13,7 +13,7 @@ module Calliope
     end
 
     def new
-      @post = current_blog.posts.build
+      @post = build_post
       respond_with(@post)
     end
 
@@ -22,7 +22,7 @@ module Calliope
     end
 
     def create
-      @post = current_blog.posts.build(params[:post])
+      @post = build_post(params[:post])
       @post.save
       respond_with(@post, :location => blog_post_url(current_blog.name, @post))
     end
@@ -37,6 +37,10 @@ module Calliope
       @post = current_blog.posts.find(params[:id])
       @post.destroy
       respond_with(@post, :location => root_blog_url(current_blog.name))
+    end
+
+    def build_post(attributes = nil)
+      current_blog.posts.build(attributes)
     end
 
     def current_blog
