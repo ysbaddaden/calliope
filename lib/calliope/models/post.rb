@@ -7,7 +7,7 @@ module Calliope
         attr_protected :blog_id
         
         belongs_to :blog
-        has_many :comments, :as => :commentable
+        has_many :comments, :as => :commentable, :dependent => :delete_all
         
         scope :latest, order("created_at DESC")
       end
